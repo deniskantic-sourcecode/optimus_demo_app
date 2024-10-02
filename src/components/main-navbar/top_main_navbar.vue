@@ -52,7 +52,7 @@
       locations: ['Location 1', 'Location 2', 'Location 3'], // Example locations
       items: [
         { title: 'Start', value: 'start' },
-        { title: 'Bar', value: 'bar' },
+        { title: 'Proizvodi', value: 'proizvodi' },
         { title: 'Fizz', value: 'fizz' },
         { title: 'Buzz', value: 'buzz' },
       ],
