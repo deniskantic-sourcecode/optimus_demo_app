@@ -1,7 +1,9 @@
 <!-- eslint-disable comma-dangle -->
 <template>
-  <h1>Test</h1>
-  <Navbar />
+  <div class="main-content">
+    <h1>Test</h1>
+    <Navbar />
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -9,3 +11,9 @@
 
   //
 </script>
+
+<style lang="css" scoped>
+.main-content {
+  padding-top: 6vh;
+}
+</style>

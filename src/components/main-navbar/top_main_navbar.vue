@@ -1,83 +1,70 @@
 <template>
-  <v-card>
-    <v-layout>
-      <v-app-bar
-        color="#0096a9"
-        prominent
-      >
-        <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer" />
+  <v-app>
+    <v-navigation-drawer v-model="drawer" app>
+      <v-list>
+        <v-list-item v-for="(item, index) in items" :key="index">
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
 
-        <v-toolbar-title>OPTIMUS</v-toolbar-title>
+    <v-app-bar app color="#0096a9">
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
-        <v-spacer />
+      <v-toolbar-title>OPTIMUS</v-toolbar-title>
 
-        <template v-if="$vuetify.display.mdAndUp">
-          <v-btn icon="mdi-magnify" variant="text" />
+      <v-spacer />
 
-          <v-btn icon="mdi-filter" variant="text" />
+      <template v-if="$vuetify.display.mdAndUp">
+        <v-btn icon @click="search">
+          <v-icon>mdi-magnify</v-icon>
+        </v-btn>
+
+        <v-btn icon @click="filter">
+          <v-icon>mdi-filter</v-icon>
+        </v-btn>
+      </template>
+      <v-menu>
+        <template #activator="{ on }">
+          <v-btn color="primary" dark v-on="on">
+            Dropdown
+          </v-btn>
         </template>
 
-        <div class="text-center">
-          <v-select
-            v-model="location"
-            :items="locations"
-            label="Location"
-          />
-          <v-menu :location="location">
-            <template #activator="{ props }">
-              <v-btn
-                color="primary"
-                dark
-                v-bind="props"
-              >
-                Dropdown
-              </v-btn>
-            </template>
-
-            <v-list>
-              <v-list-item
-                v-for="(item, index) in items"
-                :key="index"
-              >
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
-        </div>
-      </v-app-bar>
-
-    </v-layout>
-  </v-card>
+        <v-list>
+          <v-list-item
+            v-for="(item, index) in items"
+            :key="index"
+          >
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+    </v-app-bar>
+  </v-app>
 </template>
-  <script>
+
+<script>
   export default {
     data: () => ({
       drawer: false,
-      group: null,
+      location: null,
+      locations: ['Location 1', 'Location 2', 'Location 3'], // Example locations
       items: [
-        {
-          title: 'Foo',
-          value: 'foo',
-        },
-        {
-          title: 'Bar',
-          value: 'bar',
-        },
-        {
-          title: 'Fizz',
-          value: 'fizz',
-        },
-        {
-          title: 'Buzz',
-          value: 'buzz',
-        },
+        { title: 'Start', value: 'start' },
+        { title: 'Bar', value: 'bar' },
+        { title: 'Fizz', value: 'fizz' },
+        { title: 'Buzz', value: 'buzz' },
       ],
     }),
 
-    watch: {
-      group () {
-        this.drawer = false
+    methods: {
+      search () {
+      // Handle search action
+      },
+      filter () {
+      // Handle filter action
       },
     },
   }
-  </script>
+</script>
