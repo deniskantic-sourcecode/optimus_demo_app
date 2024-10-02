@@ -1,0 +1,26 @@
+services:
+    api:
+      build:
+        context: ./backend
+        dockerfile: go.dockerfile
+      volumes:
+        - .:/app #mount the current directory to /app in the container
+      command: go run main.go
+      ports:
+        - "8080:8080"
+      depends_on:
+        - postgres
+
+    postgres:
+      image: postgres:16
+      restart: always
+      environment:
+        POSTGRES_DB: optimusdb #database name
+        POSTGRES_USER: admin
+        POSTGRES_PASSWORD: password
+      ports:
+        - "5434:5434"
+      volumes:
+        - optimus-volume:/var/lib/postgresql/data
+volumes:
+  optimus-volume:

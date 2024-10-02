@@ -12,6 +12,7 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
       <v-toolbar-title>OPTIMUS</v-toolbar-title>
+      <span class="material-symbols-outlined" />
 
       <v-spacer />
 
@@ -36,7 +37,7 @@
             v-for="(item, index) in items"
             :key="index"
           >
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title><span class="{{ item.icon }}" />{{ item.title }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -48,11 +49,9 @@
   export default {
     data: () => ({
       drawer: false,
-      location: null,
-      locations: ['Location 1', 'Location 2', 'Location 3'], // Example locations
       items: [
         { title: 'Start', value: 'start' },
-        { title: 'Proizvodi', value: 'proizvodi' },
+        { title: 'Proizvodi', value: 'proizvodi', icon: 'material-symbols-outlined' },
         { title: 'Fizz', value: 'fizz' },
         { title: 'Buzz', value: 'buzz' },
       ],

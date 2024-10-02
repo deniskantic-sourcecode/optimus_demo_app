@@ -6,8 +6,6 @@
 
 // Plugins
 import { registerPlugins } from '@/plugins'
-// main.js
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 // Components
 import App from './App.vue'
